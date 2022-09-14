@@ -1,5 +1,5 @@
 @echo off
-set version=1.0
+set version=1.1 (Beta)
 set datetime = %date% %time%
 set r = %random%
 cd pwdgem
