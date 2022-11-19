@@ -66,6 +66,7 @@ cls
 echo 깃허브를 참조하세요 :)
 echo 링크: https://github.com/hmogae/getpwd
 start https://github.com/hmogae/getpwd
+pause
 goto admin
 
 :setup
@@ -114,14 +115,16 @@ echo [ 복구모드 ]
 echo.
 echo 사용자의 파일삭제로 오류가 발생했습니다,
 echo 폴더 삭제후 다시 설치해야합니다. (log.txt, pwd.txt가 삭제됩니다.)
-set /p a=계속할까요? (y/n): 
+echo (만약 설치메뉴로 들어가려면 !setupmode를 입력하세요.)
+set /p a=어떻게 계속할까요? (y/n): 
 if %a%==y goto restorestart
 if %a%==n goto exit
+if %a%==!setupmode goto setup
 if %a%==yes goto restorestart
 if %a%==no goto exit
 
 :restorestart
-set /p a=pwdget 폴더내부 파일이 모두 삭제됩니다. 정말로 삭제하실건가요? (y/n): 
+set /p a=pwdget (pwdget 폴더내부) 파일이 모두 삭제됩니다. 정말로 삭제하실건가요? (y/n): 
 if %a%==y goto restorestart2
 if %a%==n goto exit
 if %a%==yes goto restorestart2
