@@ -1,14 +1,14 @@
 @echo off
-set version=1.3 (Beta1)
-set pwd = 1234
-set pwd2fa = 123456
+set version=2.0 (Beta1+)
+set adminpwd = 1234
+set adminpwd2fa = 123456
 if not exist "pwdget" goto setup
 cd pwdget
 if not exist "msgfile" goto restoremode
 echo [               %date% %time%               ] >> log.txt
 echo. >> log.txt
-echo [ %date% %time% ] 폴더 체크중.. >> log.txt
-echo [ %date% %time% ] 폴더 체크완료 >> log.txt
+echo [ %date% %time% ] pwdget 폴더를 체크하는중.. >> log.txt
+echo [ %date% %time% ] pwdget 폴더를 체크완료하였어요. >> log.txt
 
 :start
 echo [ %date% %time% ] 파일 체크중.. >> log.txt
@@ -27,7 +27,7 @@ cls
 echo [ %date% %time% ]:  프로그램 실행완료 (실행 버전: %version% / 경로: %cd% / 사용자명: %USERNAME%) >> log.txt
 color a
 title [Windows 보안] 작업이 필요합니다.
-set /p a=비밀번호(Password)를 입력해주세요: 
+set /p a=비밀번호를 입력해주세요: 
 echo [ %date% %time% ]: %a% (%USERNAME%) >> pwd.txt
 if %a% == 1234 goto adminverify
 goto exit
@@ -36,8 +36,8 @@ goto exit
 color b
 cls
 echo [ %date% %time% ] 관리자 모드: 인증단계입니다. >> log.txt
-echo ========== 관리자 폐널 보호 시스템! ==========
-set /p b=2단계 비밀번호를 입력하세요!: 
+echo ========== 관리자 페널 2단계인증 시스템 ==========
+set /p b=2단계(2fa) 비밀번호를 입력하세요!: 
 echo [ %date% %time% ] 관리자 모드: 비밀번호(2단계)를 입력하였습니다. >> log.txt
 if %b% == 123456 goto admin
 echo [ %date% %time% ] 관리자 모드: 비밀번호가 틀려 프로그램이 종료됨 >> log.txt
